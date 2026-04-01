@@ -32,22 +32,22 @@ Route15_WestEntrance_2F_EventScript_Aide::
 	call Route15_WestEntrance_2F_EventScript_GetAideRequestInfo
 	goto_if_lt VAR_0x8006, REQUIRED_CAUGHT_MONS, Aide_EventScript_HaventCaughtEnough
 	msgbox Route15_WestEntrance_2F_Text_GreatHereYouGo
-	checkitemspace ITEM_EXP_SHARE
+	checkitemspace ITEM_CHOICE_BAND
 	goto_if_eq VAR_RESULT, FALSE, Aide_EventScript_NoRoomForItem
-	giveitem_msg Route15_WestEntrance_2F_Text_ReceivedItemFromAide, ITEM_EXP_SHARE
+	giveitem_msg Route15_WestEntrance_2F_Text_ReceivedItemFromAide, ITEM_CHOICE_BAND
 	setflag FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE
-	msgbox Route15_WestEntrance_2F_Text_ExplainExpShare
+	msgbox Route15_WestEntrance_2F_Text_ExplainChoiceBand
 	release
 	end
 
 Route15_WestEntrance_2F_EventScript_AlreadyGotExpShare::
-	msgbox Route15_WestEntrance_2F_Text_ExplainExpShare
+	msgbox Route15_WestEntrance_2F_Text_ExplainChoiceBand
 	release
 	end
 
 Route15_WestEntrance_2F_EventScript_GetAideRequestInfo::
 	buffernumberstring STR_VAR_1, REQUIRED_CAUGHT_MONS
-	bufferitemname STR_VAR_2, ITEM_EXP_SHARE
+	bufferitemname STR_VAR_2, ITEM_CHOICE_BAND
 	return
 
 Route15_WestEntrance_2F_Text_GiveItemIfCaughtEnough::
@@ -72,12 +72,13 @@ Route15_WestEntrance_2F_Text_ReceivedItemFromAide::
 	.string "{PLAYER} received the {STR_VAR_2}\n"
 	.string "from the AIDE.$"
 
-Route15_WestEntrance_2F_Text_ExplainExpShare::
-	.string "EXP. SHARE is an item to be held\n"
-	.string "by a POKéMON.\p"
-	.string "The POKéMON will receive a share\n"
-	.string "of the EXP. Points without having\l"
-	.string "to battle.$"
+Route15_WestEntrance_2F_Text_ExplainChoiceBand::
+	.string "CHOICE BAND is a held item that\n"
+	.string "boosts a POKéMON's ATK power.\p"
+	.string "But the POKéMON can only use one\n"
+	.string "move until it switches out!\p"
+	.string "It's a powerful item - use it\n"
+	.string "on your strongest attacker!$"
 
 Route15_WestEntrance_2F_Text_LargeShiningBird::
 	.string "Let's see what the binoculars have\n"

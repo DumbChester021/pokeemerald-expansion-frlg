@@ -681,47 +681,31 @@ PewterCity_EventScript_RunningShoesAideTriggerBottom::
 	end
 
 PewterCity_EventScript_AideGiveRunningShoes::
-	textcolor NPC_TEXT_COLOR_MALE
-	call_if_eq VAR_TEMP_1, 1, PewterCity_EventScript_AideNoticePlayer
-	call_if_eq VAR_TEMP_1, 2, PewterCity_EventScript_AideNoticePlayer
-	call_if_eq VAR_TEMP_1, 3, PewterCity_EventScript_AideNoticePlayer
-	waitse
-	playse SE_PIN
-	applymovement LOCALID_PEWTER_AIDE, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_PEWTER_AIDE, Common_Movement_Delay48
-	waitmovement 0
-	msgbox PewterCity_Text_OhPlayer
-	call_if_eq VAR_TEMP_1, 0, PewterCity_EventScript_AideApproachPlayer0
+	goto_if_eq VAR_TEMP_1, 0, PewterCity_EventScript_AideWhiteHerbGive
+	call PewterCity_EventScript_AideNoticePlayer
+	msgbox PewterCity_Text_OhPlayer, MSGBOX_DEFAULT
 	call_if_eq VAR_TEMP_1, 1, PewterCity_EventScript_AideApproachPlayer1
 	call_if_eq VAR_TEMP_1, 2, PewterCity_EventScript_AideApproachPlayer2
 	call_if_eq VAR_TEMP_1, 3, PewterCity_EventScript_AideApproachPlayer3
-	msgbox PewterCity_Text_AskedToDeliverThis
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	playfanfare MUS_RG_OBTAIN_KEY_ITEM
-	message PewterCity_Text_ReceivedRunningShoesFromAide
-	waitmessage
-	waitfanfare
-	msgbox PewterCity_Text_SwitchedShoesWithRunningShoes
-	special DisableMsgBoxWalkaway
-	signmsg
-	msgbox PewterCity_Text_ExplainRunningShoes
-	normalmsg
-	call EventScript_RestorePrevTextColor
-	msgbox PewterCity_Text_MustBeGoingBackToLab
-	closemessage
+PewterCity_EventScript_AideWhiteHerbGive::
+	bufferitemname STR_VAR_2, ITEM_WHITE_HERB
+	msgbox PewterCity_Text_AideDeliverWhiteHerb, MSGBOX_DEFAULT
+	checkitemspace ITEM_WHITE_HERB
+	goto_if_eq VAR_RESULT, FALSE, PewterCity_EventScript_AideWhiteHerbNoRoom
+	giveitem_msg PewterCity_Text_ReceivedWhiteHerbFromAide, ITEM_WHITE_HERB
+	msgbox PewterCity_Text_ExplainWhiteHerb, MSGBOX_DEFAULT
 	call_if_eq VAR_TEMP_1, 0, PewterCity_EventScript_AideExit0
 	call_if_eq VAR_TEMP_1, 1, PewterCity_EventScript_AideExit1
 	call_if_eq VAR_TEMP_1, 2, PewterCity_EventScript_AideExit2
 	call_if_eq VAR_TEMP_1, 3, PewterCity_EventScript_AideExit3
-	delay 30
-	textcolor NPC_TEXT_COLOR_NEUTRAL
-	msgbox PewterCity_Text_RunningShoesLetterFromMom
-	closemessage
 	removeobject LOCALID_PEWTER_AIDE
-	setflag FLAG_SYS_B_DASH
+	setflag FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
 	setvar VAR_MAP_SCENE_PEWTER_CITY, 2
 	return
+PewterCity_EventScript_AideWhiteHerbNoRoom::
+	msgbox Aide_Text_DontHaveAnyRoomForItem
+	releaseall
+	end
 
 PewterCity_EventScript_AideNoticePlayer::
 	applymovement LOCALID_PEWTER_AIDE, Common_Movement_WalkInPlaceFasterDown
@@ -960,6 +944,22 @@ PewterCity_Text_ExplainRunningShoes::
 	.string "Press the B Button to run.\n"
 	.string "But only where there's room to run!$"
 
+PewterCity_Text_AideDeliverWhiteHerb::
+	.string "I'm glad I caught up to you.\n"
+	.string "I'm PROF. OAK's AIDE.\p"
+	.string "I've been asked to deliver this\n"
+	.string "to you. Here you go!$"
+
+PewterCity_Text_ReceivedWhiteHerbFromAide::
+	.string "{PLAYER} received the\n"
+	.string "WHITE HERB from the AIDE.$"
+
+PewterCity_Text_ExplainWhiteHerb::
+	.string "WHITE HERB is a held item.\p"
+	.string "If a POKéMON's stats get lowered\n"
+	.string "in battle, it will instantly\l"
+	.string "restore them - just once!$"
+
 PewterCity_Text_MustBeGoingBackToLab::
 	.string "Well, I must be going back to\n"
 	.string "the LAB.\p"
@@ -973,4 +973,3 @@ PewterCity_Text_RunningShoesLetterFromMom::
 	.string "Remember, I'll always cheer for\n"
 	.string "you! Don't ever give up!\p"
 	.string "From Mom$"
-

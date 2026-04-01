@@ -130,6 +130,21 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
         }
     }
 
+    // Auto-run toggle: B press flips run/walk mode (works during any movement state)
+    if ((newKeys & B_BUTTON) && !(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED_MOVE) && IsFieldMessageBoxHidden())
+    {
+        if (FlagGet(FLAG_AUTO_RUN))
+        {
+            FlagClear(FLAG_AUTO_RUN);
+            PlaySE(SE_PC_OFF);
+        }
+        else
+        {
+            FlagSet(FLAG_AUTO_RUN);
+            PlaySE(SE_PC_ON);
+        }
+    }
+
     if (forcedMove == FALSE)
     {
         if (tileTransitionState == T_TILE_CENTER && runningState == MOVING)

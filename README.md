@@ -1,53 +1,65 @@
-# About `pokeemerald-expansion`
+# pokeemerald-expansion-frlg (QOL Fork)
 
-![Gif that shows debugging functionality that is unique to pokeemerald-expansion such as rerolling Trainer ID, Cheat Start, PC from Debug Menu, Debug PC Fill, Pokémon Sprite Visualizer, Debug Warp to Map, and Battle Debug Menu](https://github.com/user-attachments/assets/cf9dfbee-4c6b-4bca-8e0a-07f116ef891c) ![Gif that shows overworld functionality that is unique to pokeemerald-expansion such as indoor running, BW2 style map popups, overworld followers, DNA Splicers, Gen 1 style fishing, OW Item descriptions, Quick Run from Battle, Use Last Ball, Wild Double Battles, and Catch from EXP](https://github.com/user-attachments/assets/383af243-0904-4d41-bced-721492fbc48e) ![Gif that shows off a number of modern Pokémon battle mechanics happening in the pokeemerald-expansion engine: 2 vs 1 battles, modern Pokémon, items, moves, abilities, fully customizable opponents and partners, Trainer Slides, and generational gimmicks](https://github.com/user-attachments/assets/50c576bc-415e-4d66-a38f-ad712f3316be)
+A QOL-focused FireRed ROM hack built on top of [RHH pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion) v1.15.1, compiled with the FireRed flag (`-DFIRERED`).
 
-<!-- If you want to re-record or change these gifs, here are some notes that I used: https://files.catbox.moe/05001g.md -->
+This fork adds gameplay quality-of-life features on top of the expansion's infrastructure.
 
-**`pokeemerald-expansion`** is a GBA ROM hack base that equips developers with a comprehensive toolkit for creating Pokémon ROM hacks. **`pokeemerald-expansion`** is built on top of [pret's `pokeemerald`](https://github.com/pret/pokeemerald) decompilation project. **It is not a playable Pokémon game on its own.**
+---
 
-# [Features](FEATURES.md)
+## Features
 
-**`pokeemerald-expansion`** offers hundreds of features from various [core series Pokémon games](https://bulbapedia.bulbagarden.net/wiki/Core_series), along with popular quality-of-life enhancements designed to streamline development and improve the player experience. A full list of those features can be found in [`FEATURES.md`](FEATURES.md).
+### Auto-Run Toggle
+- Press **B** at any time in the overworld to toggle between run and walk mode — no need to hold B
+- Available **from the very start** of the game with no item or flag requirement
+- Works **indoors** (Gen 4+ behavior)
+- Toggle plays a sound cue (`SE_PC_ON` / `SE_PC_OFF`) for feedback
+- The Pewter City aide that previously gave Running Shoes now gives a **White Herb** instead
 
-# [Credits](CREDITS.md)
+### Team-Wide Exp. Share (Always On)
+- All party members always share EXP after every battle — no item required
+- Gen 9-style: the battling Pokémon gets full EXP; benched Pokémon get a share
+- Completely hardcoded — no key item or flag to manage
+- The Route 15 Oak's Aide (50 Pokémon caught) now gives a **Choice Band** instead
 
- [![](https://img.shields.io/github/all-contributors/rh-hideout/pokeemerald-expansion/upcoming)](CREDITS.md)
+### Reusable TMs
+- All TMs can be used multiple times — they are never consumed
+- Shops prevent you from buying a TM you already own ("You already have that TM.")
+- TM10 (Hidden Power) replaces TM28 (Dig) in Celadon Dept Store 2F
 
-If you use **`pokeemerald-expansion`**, please credit **RHH (Rom Hacking Hideout)**. Optionally, include the version number for clarity.
+### Evolution Item QOL
+- Trade evolution held items (Metal Coat, Electirizer, Razor Claw, etc.) can be used directly from the bag, Legends Arceus style — no trade required
 
+### BW-Style Map Popups
+- Gen 5 (Black 2/White 2) style location name popups on map transitions
+- Displays current time in 12-hour format
+
+---
+
+## Config Highlights
+
+```c
+// include/config/overworld.h
+OW_RUNNING_INDOORS      GEN_LATEST   // Running allowed indoors
+
+// include/config/item.h
+I_REUSABLE_TMS          TRUE         // TMs reusable, never consumed
+I_USE_EVO_HELD_ITEMS_FROM_BAG TRUE   // Evo held items usable from bag
+// Note: Exp. Share is always-on (IsGen6ExpShareEnabled returns TRUE)
 ```
-Based off RHH's pokeemerald-expansion 1.15.1 https://github.com/rh-hideout/pokeemerald-expansion/
+
+---
+
+## Building
+
+See [INSTALL.md](INSTALL.md) for toolchain setup.
+
+```bash
+make -j$(nproc)
 ```
 
-Please consider [crediting all contributors](CREDITS.md) involved in the project!
+---
 
-# Choosing `pokeemerald` or **`pokeemerald-expansion`**
+## Credits
 
-- **`pokeemerald-expansion`** supports multiplayer functionality with other games built on **`pokeemerald-expansion`**. It is not compatible with official Pokémon games.
-- If compatibility with official games is important, use [`pokeemerald`](https://github.com/pret/pokeemerald). Otherwise, we recommend using **`pokeemerald-expansion`**.
-- **`pokeemerald-expansion`** incorporates regular updates from `pokeemerald`, including bug fixes and documentation improvements.
-
-# [Getting Started](INSTALL.md)
-
-❗❗ **Important**: Do not use GitHub's "Download Zip" option as it will not include commit history. This is necessary if you want to update or merge other feature branches.
-
-If you're new to git and GitHub, [Team Aqua's Asset Repo](https://github.com/Pawkkie/Team-Aquas-Asset-Repo/) has a [guide to forking and cloning the repository](https://github.com/Pawkkie/Team-Aquas-Asset-Repo/wiki/The-Basics-of-GitHub). Then you can follow one of the following guides:
-
-## 📥 [Installing **`pokeemerald-expansion`**](INSTALL.md)
-## 🏗️ [Building **`pokeemerald-expansion`**](INSTALL.md#Building-pokeemerald-expansion)
-## 🚚 [Migrating from **`pokeemerald`**](INSTALL.md#Migrating-from-pokeemerald)
-## 🚀 [Updating **`pokeemerald-expansion`**](INSTALL.md#Updating-pokeemerald-expansion)
-
-# [Documentation](https://rh-hideout.github.io/pokeemerald-expansion/)
-
-For detailed documentation, visit the [pokeemerald-expansion documentation page](https://rh-hideout.github.io/pokeemerald-expansion/).
-
-# [Contributions](CONTRIBUTING.md)
-If you are looking to [report a bug](CONTRIBUTING.md#Bug-Report), [open a pull request](CONTRIBUTING.md#Pull-Requests), or [request a feature](CONTRIBUTING.md#Feature-Request), our [`CONTRIBUTING.md`](CONTRIBUTING.md) has guides for each.
-
-# [Community](https://discord.gg/6CzjAG6GZk)
-
-[![](https://dcbadge.limes.pink/api/server/6CzjAG6GZk)](https://discord.gg/6CzjAG6GZk)
-
-Our community uses the [ROM Hacking Hideout (RHH) Discord server](https://discord.gg/6CzjAG6GZk) to communicate and organize. Most of our discussions take place there, and we welcome anybody to join us!
+- [pret/pokeemerald](https://github.com/pret/pokeemerald) — base decompilation
+- [rh-hideout/pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion) v1.15.1 — RHH Gen 9 expansion ([credits](https://github.com/rh-hideout/pokeemerald-expansion/blob/upcoming/CREDITS.md))
