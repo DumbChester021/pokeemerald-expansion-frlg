@@ -417,12 +417,9 @@ PalletTown_EventScript_TrainerTips::
 	end
 
 PalletTown_EventScript_SignLadyTrigger::
-	lockall
-	applymovement LOCALID_PALLET_SIGN_LADY, Common_Movement_WalkInPlaceFasterRight
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	call PalletTown_EventScript_SignLadyShowSign
-	releaseall
+	setflag FLAG_OPENED_START_MENU
+	setvar VAR_MAP_SCENE_PALLET_TOWN_SIGN_LADY, 1
+	setvar SIGN_LADY_READY, FALSE
 	end
 
 PalletTown_EventScript_SignLadyShowSign::

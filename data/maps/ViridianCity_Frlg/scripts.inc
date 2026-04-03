@@ -220,8 +220,8 @@ ViridianCity_EventScript_TutorialTriggerRight::
 	end
 
 ViridianCity_EventScript_DoTutorialBattle::
-	msgbox ViridianCity_Text_ShowYouHowToCatchMons
-	closemessage
+	msgbox ViridianCity_Text_ShowYouHowToCatchMons, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, ViridianCity_EventScript_TutorialDeclined
 	special StartOldManTutorialBattle
 	waitstate
 	lock
@@ -230,6 +230,13 @@ ViridianCity_EventScript_DoTutorialBattle::
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
 	giveitem ITEM_TEACHY_TV
 	msgbox ViridianCity_Text_WatchThatToLearnBasics
+	return
+
+ViridianCity_EventScript_TutorialDeclined::
+	msgbox ViridianCity_Text_AlreadyKnowHowToCatch
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
+	giveitem ITEM_TEACHY_TV
+	msgbox ViridianCity_Text_TakeTeachyTVAnyway
 	return
 
 ViridianCity_Text_CanCarryMonsAnywhere::
@@ -289,8 +296,18 @@ ViridianCity_Text_ShowYouHowToCatchMons::
 	.string "its data.\p"
 	.string "…You don't know how to catch\n"
 	.string "a POKéMON?\p"
-	.string "I suppose I had better show you\n"
-	.string "then!$"
+	.string "Shall I show you how\n"
+	.string "it's done?$"
+
+ViridianCity_Text_AlreadyKnowHowToCatch::
+	.string "Hm! You seem confident enough.\n"
+	.string "I'll take your word for it!$"
+
+ViridianCity_Text_TakeTeachyTVAnyway::
+	.string "Still, take this with you\n"
+	.string "just in case.\p"
+	.string "If there's something you'd like\n"
+	.string "to review, watch that.$"
 
 ViridianCity_Text_ThatWasEducationalTakeThis::
 	.string "There! Now tell me, that was\n"

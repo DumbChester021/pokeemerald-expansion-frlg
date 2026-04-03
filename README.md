@@ -33,6 +33,13 @@ This fork adds gameplay quality-of-life features on top of the expansion's infra
 - Gen 5 (Black 2/White 2) style location name popups on map transitions
 - Displays current time in 12-hour format
 
+### EV-IV Display in Summary Screen
+- Switch around the EV/IV Display in summary screen
+
+### Blocking Scripts Fix
+- Pallet Town Signpost lady
+- Viridian City Teacy TV Guy
+
 ---
 
 ## Config Highlights
