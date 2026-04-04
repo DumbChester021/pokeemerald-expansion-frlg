@@ -32,7 +32,7 @@ def from_batch(dir: pathlib.Path) -> dict[str, set[str]]:
             species: acc.get(species, set()) | single.get(species, set())
             for species in acc.keys() | single.keys()
         },
-        map(from_single, dir.glob("*.json")),
+        map(from_single, sorted(dir.glob("*.json"))),
         {},
     )
 
@@ -55,7 +55,7 @@ def main():
         for species, learnables in from_batch(INPUTS_DIR).items()
     }
     with open(OUTPUT_FILE, "w") as fp:
-        json.dump(batch, fp, indent=2)
+        json.dump(batch, fp, indent=2, sort_keys=True)
 
 
 if __name__ == "__main__":
