@@ -79,8 +79,23 @@ On top of the QOL features, this fork also rewrites core FireRed gameplay to mak
 - **Pewter Gym trainer Liam**: expanded to 3 mons (+Nidoran M sweep counter)
 - **Brock**: expanded to 4 mons (Geodude/Sandshrew/NidoranM/Onix lv13–15, +Super Potion)
 
+### Level Cap
+Hard exp cap tied to badge progression. Pokémon at or above the cap cannot gain exp until the next badge is earned. Rare Candy is also blocked above cap.
+
+| Badges earned | Cap |
+|---|---|
+| 0 (pre-Brock) | 15 |
+| 1 | 19 |
+| 2 | 24 |
+| 3 | 29 |
+| 4 | 43 |
+| 5 | 46 |
+| 6 | 50 |
+| 7 | 55 |
+| All 8 | 63 |
+
 ### Wild Encounters
-- Route 1, Viridian Forest: anime-accurate species added (Spearow, Sandshrew, Mankey, Pidgeotto)
+- Routes 1/2/22, Viridian Forest, Route 3: expanded with thematic species (Spearow, Mankey, Sandshrew, Pidgeotto, Nidoran, Ekans, Jigglypuff)
 - All 114 FR tables: LG-exclusive species merged in at 1% slots so they're catchable in FR-only build
 
 ---
