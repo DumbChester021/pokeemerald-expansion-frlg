@@ -1031,13 +1031,12 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Defense Curl
 - Sand Attack
 
-Nidoran M
+Zubat
 Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Leer
-- Tackle
-- Poison Sting
-- Double Kick
+- Leech Life
+- Supersonic
+- Wing Attack
 
 === TRAINER_CAMPER_SHANE ===
 Name: SHANE
@@ -7087,13 +7086,13 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Defense Curl
 - Sand Attack
 
-Nidoran M
+Zubat
 Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Leer
-- Tackle
-- Poison Sting
-- Double Kick
+- Leech Life
+- Supersonic
+- Astonish
+- Wing Attack
 
 Onix
 Level: 15

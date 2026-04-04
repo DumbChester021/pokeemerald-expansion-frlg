@@ -37,12 +37,15 @@ All 5 Bug Catchers updated (RICK/DOUG/SAMMY/ANTHONY/CHARLIE):
 TRAINER_CAMPER_LIAM (gym trainer):
 - Geodude lv11 (Tackle/Defense Curl/Rock Throw)
 - Sandshrew lv12 (Scratch/Defense Curl/Sand Attack)
-- Nidoran M lv12 — sweep counter (Leer/Tackle/Poison Sting/Double Kick; Poison resists Grass starter)
+- Zubat lv12 — counter (Leech Life/Supersonic/Wing Attack; Flying resists Grass+Fighting)
 
 TRAINER_LEADER_BROCK (4 mons, Super Potion):
 - Geodude lv13 — thematic (Tackle/Defense Curl/Rock Throw)
 - Sandshrew lv14 — thematic (Scratch/Defense Curl/Sand Attack)
-- Nidoran M lv14 — anti-sweep (Leer/Tackle/Poison Sting/Double Kick)
+- Zubat lv14 — counter (Leech Life/Supersonic/Astonish/Wing Attack)
+  - Flying double-resists Turtwig's Grass moves; Wing Attack 2x vs Turtwig
+  - Flying resists Mankey's Fighting moves
+  - Thematic: Mt. Moon is Pewter's adjacent cave
 - Onix lv15 — Ace (Screech/Tackle/Bind/Rock Tomb)
 
 ### Level Cap System (`include/config/caps.h`, `src/caps.c`)
