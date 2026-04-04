@@ -45,6 +45,22 @@ TRAINER_LEADER_BROCK (4 mons, Super Potion):
 - Nidoran M lv14 — anti-sweep (Leer/Tackle/Poison Sting/Double Kick)
 - Onix lv15 — Ace (Screech/Tackle/Bind/Rock Tomb)
 
+### Level Cap System (`include/config/caps.h`, `src/caps.c`)
+Hard exp cap enabled (`EXP_CAP_HARD`), driven by badge flags (`LEVEL_CAP_FLAG_LIST`). Rare Candy blocked above cap. Under-cap exp bonus enabled.
+
+Badge cap table (`sLevelCapFlagMap` in `src/caps.c`):
+| Badge | Cap | Reference |
+|---|---|---|
+| 1 (Brock) | 15 | Onix lv15 ace |
+| 2 (Misty) | 19 | Starmie bracket |
+| 3 (Surge) | 24 | Raichu bracket |
+| 4 (Erika) | 29 | Vileplume bracket |
+| 5 (Koga) | 43 | Weezing bracket |
+| 6 (Sabrina) | 46 | Alakazam bracket |
+| 7 (Blaine) | 50 | Arcanine bracket |
+| 8 (Giovanni) | 55 | Rhydon bracket |
+| Champion | 63 | Rival champion ace |
+
 ### Rival Battle Overhaul (`src/data/trainers_frlg.party`)
 All 8 encounter points × 3 starter branches = 24 trainer blocks updated.
 
