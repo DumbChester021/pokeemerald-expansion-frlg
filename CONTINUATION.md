@@ -1,7 +1,10 @@
-# Continuation — Anime-Accurate Encounter & Trainer Overhaul
+# Continuation — Gameplay Overhaul
 
-## Project Goal
-Make pokeemerald-expansion-frlg (FireRed only build) match the original Kanto anime (OS EP001–EP082).
+## What This Project Is
+A **QOL-focused FireRed ROM hack** built on pokeemerald-expansion v1.15.1 (see README.md for the QOL feature list). This continuation doc tracks a *second layer*: rewriting core FireRed gameplay to make it **fun and competitive** — fixing vanilla's flat difficulty, repetitive encounters, and pushover trainers.
+
+The Kanto anime (OS EP001–EP082) is used as a loose thematic guide for what Pokémon fit each area, not a strict accuracy constraint. Species choices prioritise encounter variety and trainer challenge over lore fidelity.
+
 Single FireRed build — no LeafGreen. Gen 4 starters replace Gen 1. Gen 1 starters become rare wild catches.
 
 ---
@@ -19,19 +22,31 @@ Single FireRed build — no LeafGreen. Gen 4 starters replace Gen 1. Gen 1 start
 - Oak lab script updated: all 3 ball event PLAYER/RIVAL_STARTER_SPECIES vars use Gen 4 species; confirmation text strings updated to name Turtwig/Piplup/Chimchar with vanilla-style dialogue
 
 ### Viridian Forest Trainer Teams (`src/data/trainers_frlg.party`)
-All 5 trainers updated (RICK/DOUG/SAMMY/ANTHONY/CHARLIE):
+All 5 Bug Catchers updated (RICK/DOUG/SAMMY/ANTHONY/CHARLIE):
 - Rick: Weedle lv10, Caterpie lv10, Kakuna lv11
 - Doug: Weedle lv10, Beedrill lv11 (Poison Sting/Fury Attack), Metapod lv11
 - Sammy: Butterfree lv11 (Confusion), Weedle lv11
 - Anthony: Caterpie lv11, Weedle lv11, Kakuna lv12
 - Charlie: Butterfree lv12 (Confusion), Beedrill lv12 (Poison Sting/Fury Attack), Caterpie lv11
 
+### Pewter Gym Overhaul (`src/data/trainers_frlg.party`)
+TRAINER_CAMPER_LIAM (gym trainer):
+- Geodude lv11 (Tackle/Defense Curl/Rock Throw)
+- Sandshrew lv12 (Scratch/Defense Curl/Sand Attack)
+- Nidoran M lv12 — sweep counter (Leer/Tackle/Poison Sting/Double Kick; Poison resists Grass starter)
+
+TRAINER_LEADER_BROCK (4 mons, Super Potion):
+- Geodude lv13 — thematic (Tackle/Defense Curl/Rock Throw)
+- Sandshrew lv14 — thematic (Scratch/Defense Curl/Sand Attack)
+- Nidoran M lv14 — anti-sweep (Leer/Tackle/Poison Sting/Double Kick)
+- Onix lv15 — Ace (Screech/Tackle/Bind/Rock Tomb)
+
 ### Rival Battle Overhaul (`src/data/trainers_frlg.party`)
 All 8 encounter points × 3 starter branches = 24 trainer blocks updated.
 
-**Design rules applied:**
+**Design rules:**
 - Rival's starter: SQUIRTLE branch → Piplup→Prinplup→Empoleon; BULBASAUR → Turtwig→Grotle→Torterra; CHARMANDER → Chimchar→Monferno→Infernape
-- Raticate (non-anime) replaced with Eevee; Eevee evolves to Jolteon from Silph onward (anime Gary had Eevee)
+- Raticate (non-anime) replaced with Eevee; evolves to Jolteon from Silph onward (anime Gary had Eevee)
 - Growlithe → Arcanine from Silph onward (Fire Stone, anime-accurate)
 - Rhyhorn → Rhydon from Route 22 Late (lv42 evolution)
 - All mons given proper movesets (SS Anne and Tower entries were moveset-less)
@@ -49,18 +64,6 @@ All 8 encounter points × 3 starter branches = 24 trainer blocks updated.
 | Route 22 Late | post-all 8 | lv53 |
 | Champion | final | lv63 |
 
-### Pewter Gym Overhaul (`src/data/trainers_frlg.party`)
-TRAINER_CAMPER_LIAM (gym trainer):
-- Geodude lv11 (Tackle/Defense Curl/Rock Throw)
-- Sandshrew lv12 (Scratch/Defense Curl/Sand Attack)
-- Nidoran M lv12 — sweep counter (Leer/Tackle/Poison Sting/Double Kick; Poison resists Grass starter)
-
-TRAINER_LEADER_BROCK (4 mons, Super Potion):
-- Geodude lv13 — thematic (Tackle/Defense Curl/Rock Throw)
-- Sandshrew lv14 — thematic (Scratch/Defense Curl/Sand Attack)
-- Nidoran M lv14 — anti-sweep (Leer/Tackle/Poison Sting/Double Kick)
-- Onix lv15 — Ace (Screech/Tackle/Bind/Rock Tomb)
-
 ---
 
 ## TODO (in order)
@@ -70,11 +73,11 @@ Read the FR table, cross-ref anime pool below, replace duplicate/non-anime slots
 Key locations still untouched: Route 2, Route 3, Route 4, Route 5/6, Route 7, Route 8, Route 9/10, Route 11-15, Route 22-25, Mt. Moon, Rock Tunnel, Pokémon Tower, Safari Zone, Seafoam, Victory Road.
 
 ### 2. Broader Trainer Team Overhaul
-Same pass as encounter overhaul — once wild pools expand, trainers in each area should use Pokémon available in that area. Check trainers_frlg.party for each route's trainer class and expand their pools.
+Once wild pools are expanded, trainers in each area should reflect available Pokémon for that route. Check trainers_frlg.party for each route's trainer class and expand their pools to match.
 
 ---
 
-## Anime Wild Pools (source of truth)
+## Thematic Wild Pools (anime as reference, not hard rule)
 
 | Location | Wild Pokémon (anime-confirmed) |
 |---|---|
@@ -106,6 +109,7 @@ Same pass as encounter overhaul — once wild pools expand, trainers in each are
 | `src/data/wild_encounters.h` | All wild tables. FRLG tables use `#ifdef FIRERED` / `#ifdef LEAFGREEN`. Kanto routes start ~line 8466 |
 | `src/data/trainers_frlg.party` | All FRLG trainer parties. Human-readable format |
 | `src/starter_choose.c:113-115` | Starter species macros |
+| `data/maps/PalletTown_ProfessorOaksLab_Frlg/scripts.inc` | Oak lab starter dialogue and event vars |
 
 ## Table Format
 ```c
