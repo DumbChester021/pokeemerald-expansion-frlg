@@ -63,6 +63,16 @@ ViridianForest_EventScript_Charlie::
 	msgbox ViridianForest_Text_CharliePostBattle, MSGBOX_AUTOCLOSE
 	end
 
+ViridianForest_EventScript_Kevin::
+	trainerbattle_single TRAINER_BUG_CATCHER_KEVIN, ViridianForest_Text_KevinIntro, ViridianForest_Text_KevinDefeat
+	msgbox ViridianForest_Text_KevinPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+ViridianForest_EventScript_Jose::
+	trainerbattle_single TRAINER_BUG_CATCHER_JOSE, ViridianForest_Text_JoseIntro, ViridianForest_Text_JoseDefeat
+	msgbox ViridianForest_Text_JosePostBattle, MSGBOX_AUTOCLOSE
+	end
+
 ViridianForest_Text_FriendsItchingToBattle::
 	.string "I came here with some friends to\n"
 	.string "catch us some BUG POKéMON!\p"
@@ -168,3 +178,27 @@ ViridianForest_Text_LeavingViridianForest::
 	.string "LEAVING VIRIDIAN FOREST\n"
 	.string "PEWTER CITY AHEAD$"
 
+
+ViridianForest_Text_KevinIntro::
+	.string "Don't get lost in here!\n"
+	.string "Let's battle to pass the time!$"
+
+ViridianForest_Text_KevinDefeat::
+	.string "You got me!\n"
+	.string "I need to catch stronger bugs!$"
+
+ViridianForest_Text_KevinPostBattle::
+	.string "I've been in this forest all day\n"
+	.string "hunting bugs. Wanna trade tips?$"
+
+ViridianForest_Text_JoseIntro::
+	.string "I just got a BEEDRILL!\n"
+	.string "Let's see what you've got!$"
+
+ViridianForest_Text_JoseDefeat::
+	.string "Whoa! You're really strong!\n"
+	.string "My BEEDRILL got wrecked...$"
+
+ViridianForest_Text_JosePostBattle::
+	.string "BEEDRILL are so cool but\n"
+	.string "really hard to control!$"

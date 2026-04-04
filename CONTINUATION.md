@@ -12,7 +12,9 @@ Single FireRed build — no LeafGreen. Gen 4 starters replace Gen 1. Gen 1 start
 ## DONE
 
 ### Wild Encounters (`src/data/wild_encounters.h`)
-- **Viridian Forest** (FR+LG, lines ~3806): Pidgey, Pidgeotto, Spearow added; excess Kakuna/Metapod slots replaced
+- **Viridian Forest** (JSON): Reduced 6-slot Caterpie/Weedle monotony. Added Pidgey (10%), Spearow (4%), Pidgeotto (4% rare), Beedrill/Butterfree (1% each version); Pikachu fixed to lv4-8; Metapod+Kakuna kept at 5% each; all entries use level ranges
+- **Route 3** (JSON): Fixed Jigglypuff lv3 bug (was a placeholder, now lv6-10); added Nidoran F at 10% in FR (was 1%), Nidoran M at 10% in LG; Mankey upgraded to 4% rare slot; all flat levels converted to ranges
+- **2 new Viridian Forest trainers** (map.json + scripts.inc + trainers_frlg.party): KEVIN (south-mid path: Caterpie/Weedle/Metapod lv10-11) and JOSE (north-mid path: Weedle/Kakuna/Beedrill lv11-12). Map positions estimated — verify placement in porymap.
 - **Route 1** (FR+LG, lines ~8466): Spearow lv3-5 (5%×2), Sandshrew lv3-5 (1%), Mankey lv3-5 (1%) added; flat single-level Pidgey/Rattata entries replaced with level ranges
 - **Route 2** (FR+LG, lines ~8506): Nidoran M/F lv3-5 (10% each), Spearow lv3-5 (4%), Ekans lv3-5 (4%) added; plain Rattata/Pidgey duplicates replaced; Caterpie/Weedle kept at 5% and 1%
 - **Route 22** (FR+LG, lines ~9814): Rattata/Mankey dominant (45%/45%), Spearow (10%) — Mankey and Spearow are the key additions over vanilla
